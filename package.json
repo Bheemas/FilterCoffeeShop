@@ -1,0 +1,17 @@
+{
+  "name": "filtercoffeeshop",
+  "version": "1.0.0",
+  "description": "Kumbakonam Filter Coffee Shop Vue app with Node.js backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "nodejs",
+    "vuejs",
+    "coffee-shop"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kumbakonam Filter Coffee Shop</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 24px;
+        background: #f8f5f0;
+        color: #2e1c0f;
+      }
+      h1 {
+        margin-top: 0;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: #fff;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ shopName }}</h1>
+      <p>Traditional South Indian filter coffee served fresh.</p>
+      <h2>Menu</h2>
+      <ul>
+        <li v-for="item in menu" :key="item.id">
+          <span>{{ item.name }}</span>
+          <strong>₹{{ item.priceInr }}</strong>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            shopName: "Kumbakonam Filter Coffee Shop",
+            menu: []
+          };
+        },
+        async mounted() {
+          const response = await fetch("/api/menu");
+          const payload = await response.json();
+          this.menu = payload.items || [];
+        }
+      }).mount("#app");
+    </script>
+  </body>
+</html>
